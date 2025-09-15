@@ -60,7 +60,7 @@ const Dashboard = () => {
   description: "Ask farming questions through multilingual voice assistant",
   icon: Bot,
   gradient: "bg-gradient-to-br from-primary to-crop",
-  buttonText: "Talk to Jarvis",
+  buttonText: "Talk with Jarvis",
   onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank")
 }
 
