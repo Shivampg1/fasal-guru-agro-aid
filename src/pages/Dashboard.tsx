@@ -44,15 +44,16 @@ const Dashboard = () => {
       buttonText: "Check Disease",
       onClick: () => setActiveSection(activeSection === "disease" ? null : "disease")
     },
-    {
-      id: "weather",
-      title: "Weather Prediction",
-      description: "Get weather forecasts based on historical data analysis",
-      icon: CloudSun,
-      gradient: "bg-gradient-to-br from-weather to-accent",
-      buttonText: "View Forecast",
-      onClick: () => setActiveSection(activeSection === "weather" ? null : "weather")
-    },
+ {
+  id: "weather",
+  title: "Weather Prediction",
+  description: "Get weather forecasts based on historical data analysis",
+  icon: CloudSun,
+  gradient: "bg-gradient-to-br from-weather to-accent",
+  buttonText: "View Forecast",
+  onClick: () => window.open("weather-app-navy-nine-35.vercel.app", "_blank")
+},
+
     {
       id: "jarvis",
       title: "Jarvis AI Assistant",
