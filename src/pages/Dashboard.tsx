@@ -54,21 +54,16 @@ const Dashboard = () => {
   onClick: () => window.open("https://weather-app-navy-nine-35.vercel.app", "_blank")
 },
 
- {
+{
   id: "jarvis",
   title: "Jarvis AI Assistant",
   description: "Ask farming questions through multilingual voice assistant",
   icon: Bot,
   gradient: "bg-gradient-to-br from-primary to-crop",
   buttonText: "Talk to Jarvis",
-  onClick: () => {
-    toast({
-      title: "Jarvis Activated",
-      description: "Opening voice assistant in new tab...",
-    });
-    window.open("https://jarvis-flask-alpha.vercel.app/", "_blank");
-  }
+  onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank")
 }
+
 
   ];
 
