@@ -5,16 +5,22 @@ import { useState } from "react";
 const Header = () => {
   const [isListening, setIsListening] = useState(false);
 
-const toggleVoiceAssistant = () => {
-  console.log("Ask Jarvis button clicked ✅");
-  window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"); 
-  setIsListening((prev) => !prev);
-};
+  const toggleVoiceAssistant = () => {
+    setIsListening(!isListening);
+
+    // 👉 Open your Jarvis app on Vercel
+    const url = "https://jarvis-flask-alpha.vercel.app/";
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+
+    // fallback if popup blocked
+    if (!newWindow) {
+      window.location.href = url;
+    }
+  };
 
   return (
     <header className="bg-card border-b border-border px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-br from-primary to-crop rounded-lg flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-lg">FG</span>
@@ -24,8 +30,7 @@ const toggleVoiceAssistant = () => {
             <p className="text-sm text-muted-foreground">Smart Farming Assistant</p>
           </div>
         </div>
-        
-        {/* Ask Jarvis Button */}
+
         <div className="flex items-center space-x-4">
           <Button
             variant={isListening ? "default" : "outline"}
