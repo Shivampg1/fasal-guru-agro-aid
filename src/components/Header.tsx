@@ -8,16 +8,14 @@ const Header = () => {
   const toggleVoiceAssistant = () => {
     setIsListening(!isListening);
 
-    // ✅ Open Jarvis AI deployed app in new tab
-    if (!isListening) {
-      window.open("https://jarvis-flask-alpha.vercel.app/", "_blank");
-    }
+    // ✅ Always open Jarvis in new tab
+    window.open("https://jarvis-flask-alpha.vercel.app/", "_blank");
   };
 
   return (
     <header className="bg-card border-b border-border px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo + Title */}
+        {/* Logo */}
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-br from-primary to-crop rounded-lg flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-lg">FG</span>
@@ -28,7 +26,7 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Voice Assistant Button */}
+        {/* Ask Jarvis Button */}
         <div className="flex items-center space-x-4">
           <Button
             variant={isListening ? "default" : "outline"}
