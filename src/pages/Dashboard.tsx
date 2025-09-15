@@ -61,14 +61,9 @@ const Dashboard = () => {
   icon: Bot,
   gradient: "bg-gradient-to-br from-primary to-crop",
   buttonText: "Talk to Jarvis",
-  onClick: () => {
-    toast({
-      title: "Jarvis Activated",
-      description: "Opening voice assistant in a new tab...",
-    });
-    window.open("https://jarvis-flask-alpha.vercel.app/", "_blank");
-  }
+  onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank")
 }
+
 
 
 
