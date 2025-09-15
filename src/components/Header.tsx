@@ -5,12 +5,11 @@ import { useState } from "react";
 const Header = () => {
   const [isListening, setIsListening] = useState(false);
 
-  const toggleVoiceAssistant = () => {
-    setIsListening(!isListening);
-
-    // ✅ Always open Jarvis in new tab
-    window.open("https://jarvis-flask-alpha.vercel.app/", "_blank");
-  };
+const toggleVoiceAssistant = () => {
+  console.log("Ask Jarvis button clicked ✅");
+  window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"); 
+  setIsListening((prev) => !prev);
+};
 
   return (
     <header className="bg-card border-b border-border px-6 py-4">
