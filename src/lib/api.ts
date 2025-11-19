@@ -1,4 +1,4 @@
-export const API_BASE = " https://7baefe0d3a89.ngrok-free.app";
+export const API_BASE = "https://fca321a26ddb.ngrok-free.app";
 
 // Enrolment (POST)
 export async function enrolFarmer(data: any) {
