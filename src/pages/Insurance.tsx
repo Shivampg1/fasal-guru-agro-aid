@@ -1,8 +1,12 @@
-import { useState } from "react";
-import { enrolFarmer, submitClaim, getYield } from "../lib/api";
+import React, { useState } from "react";
+import { enrolFarmer, submitClaim, getYield } from "../services/api";
 
-export default function Insurance() {
-  // Enrolment state
+export default function InsurancePage() {
+  const [response, setResponse] = useState(null);
+
+  // -----------------------------
+  //  ENROLMENT FORM STATE
+  // -----------------------------
   const [enrolData, setEnrolData] = useState({
     farmer_name: "",
     mobile: "",
@@ -12,28 +16,42 @@ export default function Insurance() {
     premium: "",
   });
 
-  // Claim state
+  // -----------------------------
+  //  CLAIM FORM STATE
+  // -----------------------------
   const [claimData, setClaimData] = useState({
     policy_id: "",
     damage_type: "",
     loss_area: "",
   });
 
-  // Yield state
-  const [yieldData, setYieldData] = useState({
-    farm_location: "",
-    crop_type: "",
-    season: "",
-  });
+  // -----------------------------
+  //  YIELD FORM STATE
+  // -----------------------------
+  const [geoQuery, setGeoQuery] = useState("");
 
-  const [response, setResponse] = useState<any>(null);
-
-  const handleChange = (setter: any, field: string, value: any) => {
-    setter((prev: any) => ({ ...prev, [field]: value }));
-  };
-
-  // ✅ Enrolment handler
+  // ======================================================
+  //  ENROL BUTTON CLICK
+  // ======================================================
   const handleEnrol = async () => {
+    // ------------ VALIDATION ------------
+    if (
+      !enrolData.farmer_name ||
+      !enrolData.mobile ||
+      !enrolData.crop ||
+      !enrolData.season ||
+      !enrolData.parcel_geo ||
+      !enrolData.premium
+    ) {
+      alert("❌ Please fill all enrolment fields");
+      return;
+    }
+
+    if (isNaN(Number(enrolData.premium))) {
+      alert("❌ Premium must be a valid number");
+      return;
+    }
+
     const payload = {
       farmer_name: enrolData.farmer_name,
       mobile: enrolData.mobile,
@@ -42,104 +60,152 @@ export default function Insurance() {
       parcel_geo: enrolData.parcel_geo,
       premium: Number(enrolData.premium),
     };
+
+    console.log("Enrol Payload:", payload);
+
     const res = await enrolFarmer(payload);
-    console.log(res);
     setResponse(res);
   };
 
-  // ✅ Claim handler
+  // ======================================================
+  //  CLAIM BUTTON CLICK
+  // ======================================================
   const handleClaim = async () => {
+    if (
+      !claimData.policy_id ||
+      !claimData.damage_type ||
+      !claimData.loss_area
+    ) {
+      alert("❌ Please fill all claim fields");
+      return;
+    }
+
+    if (isNaN(Number(claimData.policy_id))) {
+      alert("❌ Policy ID must be a number");
+      return;
+    }
+
+    if (isNaN(Number(claimData.loss_area))) {
+      alert("❌ Loss area must be a number");
+      return;
+    }
+
     const payload = {
       policy_id: Number(claimData.policy_id),
       damage_type: claimData.damage_type,
       loss_area: Number(claimData.loss_area),
     };
+
+    console.log("Claim Payload:", payload);
+
     const res = await submitClaim(payload);
-    console.log(res);
     setResponse(res);
   };
 
-  // ✅ Yield handler
+  // ======================================================
+  //  YIELD BUTTON CLICK
+  // ======================================================
   const handleYield = async () => {
-    // Map farm_location → parcel_geo for backend
-    const payload = { parcel_geo: yieldData.farm_location };
-    const res = await getYield(payload);
-    console.log(res);
+    if (!geoQuery) {
+      alert("❌ Enter parcel_geo for yield prediction");
+      return;
+    }
+
+    const res = await getYield(geoQuery);
     setResponse(res);
   };
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">PMFBY Insurance Portal</h1>
+    <div style={{ padding: 20 }}>
+      <h2>🌾 Fasal Guru - Insurance Portal</h2>
 
-      {/* Enrolment */}
-      <div className="border p-5 rounded-xl mb-8">
-        <h2 className="text-xl font-semibold mb-3">Farmer Enrolment</h2>
-        {Object.keys(enrolData).map((field) => (
-          <input
-            key={field}
-            className="border p-2 w-full mb-2 rounded"
-            placeholder={field}
-            value={(enrolData as any)[field]}
-            onChange={(e) => handleChange(setEnrolData, field, e.target.value)}
-          />
-        ))}
-        <button
-          className="bg-green-600 text-white px-4 py-2 rounded"
-          onClick={handleEnrol}
-        >
-          Enrol Farmer
-        </button>
-      </div>
+      {/* ----------------------------------------- */}
+      {/*               ENROLMENT FORM              */}
+      {/* ----------------------------------------- */}
+      <h3>1️⃣ Farmer Enrolment</h3>
 
-      {/* Claim */}
-      <div className="border p-5 rounded-xl mb-8">
-        <h2 className="text-xl font-semibold mb-3">Submit Claim</h2>
-        {Object.keys(claimData).map((field) => (
-          <input
-            key={field}
-            className="border p-2 w-full mb-2 rounded"
-            placeholder={field}
-            value={(claimData as any)[field]}
-            onChange={(e) => handleChange(setClaimData, field, e.target.value)}
-          />
-        ))}
-        <button
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-          onClick={handleClaim}
-        >
-          Submit Claim
-        </button>
-      </div>
+      <input placeholder="Farmer Name"
+        value={enrolData.farmer_name}
+        onChange={(e) => setEnrolData({ ...enrolData, farmer_name: e.target.value })}
+      /><br />
 
-      {/* Yield */}
-      <div className="border p-5 rounded-xl mb-8">
-        <h2 className="text-xl font-semibold mb-3">Yield Estimation</h2>
-        {Object.keys(yieldData).map((field) => (
-          <input
-            key={field}
-            className="border p-2 w-full mb-2 rounded"
-            placeholder={field}
-            value={(yieldData as any)[field]}
-            onChange={(e) => handleChange(setYieldData, field, e.target.value)}
-          />
-        ))}
-        <button
-          className="bg-orange-600 text-white px-4 py-2 rounded"
-          onClick={handleYield}
-        >
-          Get Yield Prediction
-        </button>
-      </div>
+      <input placeholder="Mobile"
+        value={enrolData.mobile}
+        onChange={(e) => setEnrolData({ ...enrolData, mobile: e.target.value })}
+      /><br />
 
-      {/* Response */}
+      <input placeholder="Crop"
+        value={enrolData.crop}
+        onChange={(e) => setEnrolData({ ...enrolData, crop: e.target.value })}
+      /><br />
+
+      <input placeholder="Season"
+        value={enrolData.season}
+        onChange={(e) => setEnrolData({ ...enrolData, season: e.target.value })}
+      /><br />
+
+      <input placeholder="Parcel Geo"
+        value={enrolData.parcel_geo}
+        onChange={(e) => setEnrolData({ ...enrolData, parcel_geo: e.target.value })}
+      /><br />
+
+      <input placeholder="Premium" type="number"
+        value={enrolData.premium}
+        onChange={(e) => setEnrolData({ ...enrolData, premium: e.target.value })}
+      /><br />
+
+      <button onClick={handleEnrol}>Enrol Farmer</button>
+
+
+      {/* ----------------------------------------- */}
+      {/*               CLAIM FORM                  */}
+      {/* ----------------------------------------- */}
+      <h3>2️⃣ Submit Claim</h3>
+
+      <input placeholder="Policy ID"
+        value={claimData.policy_id}
+        onChange={(e) => setClaimData({ ...claimData, policy_id: e.target.value })}
+      /><br />
+
+      <input placeholder="Damage Type"
+        value={claimData.damage_type}
+        onChange={(e) => setClaimData({ ...claimData, damage_type: e.target.value })}
+      /><br />
+
+      <input placeholder="Loss Area" type="number"
+        value={claimData.loss_area}
+        onChange={(e) => setClaimData({ ...claimData, loss_area: e.target.value })}
+      /><br />
+
+      <button onClick={handleClaim}>Submit Claim</button>
+
+
+      {/* ----------------------------------------- */}
+      {/*               YIELD PREDICTION            */}
+      {/* ----------------------------------------- */}
+      <h3>3️⃣ Get Yield Prediction</h3>
+
+      <input placeholder="Parcel Geo"
+        value={geoQuery}
+        onChange={(e) => setGeoQuery(e.target.value)}
+      /><br />
+
+      <button onClick={handleYield}>Get Yield</button>
+
+
+      {/* ----------------------------------------- */}
+      {/*               RESPONSE BOX                */}
+      {/* ----------------------------------------- */}
       {response && (
-        <div className="border p-4 rounded-xl bg-gray-100">
-          <h2 className="font-semibold">Response:</h2>
-          <pre className="text-sm mt-2">
-            {JSON.stringify(response, null, 2)}
-          </pre>
-        </div>
+        <pre style={{
+          marginTop: 20,
+          padding: 10,
+          background: "#222",
+          color: "#0f0",
+          borderRadius: 8
+        }}>
+          {JSON.stringify(response, null, 2)}
+        </pre>
       )}
     </div>
   );
