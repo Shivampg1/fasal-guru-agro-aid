@@ -33,7 +33,7 @@ const Dashboard = () => {
       icon: Leaf,
       gradient: "bg-gradient-to-br from-soil to-harvest",
       buttonText: "Analyze Soil",
-      onClick: () => setActiveSection(activeSection === "soil" ? null : "soil")
+      onClick: () => window.open("https://huggingface.co/spaces/soildetect/soil-detection-app", "_blank")
     },
     {
       id: "disease",
@@ -42,7 +42,7 @@ const Dashboard = () => {
       icon: Bug,
       gradient: "bg-gradient-to-br from-crop to-primary",
       buttonText: "Check Disease",
-      onClick: () => setActiveSection(activeSection === "disease" ? null : "disease")
+      onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/crop-disease-detector-app", "_blank")
     },
 {
   id: "weather",
