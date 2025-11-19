@@ -2,6 +2,7 @@ import { useState } from "react";
 import { enrolFarmer, submitClaim, getYield } from "../lib/api";
 
 export default function Insurance() {
+  // Enrolment state
   const [enrolData, setEnrolData] = useState({
     farmer_name: "",
     mobile: "",
@@ -11,12 +12,14 @@ export default function Insurance() {
     premium: "",
   });
 
+  // Claim state
   const [claimData, setClaimData] = useState({
     policy_id: "",
     damage_type: "",
     loss_area: "",
   });
 
+  // Yield state
   const [yieldData, setYieldData] = useState({
     farm_location: "",
     crop_type: "",
@@ -56,6 +59,15 @@ export default function Insurance() {
     setResponse(res);
   };
 
+  // ✅ Yield handler
+  const handleYield = async () => {
+    // Map farm_location → parcel_geo for backend
+    const payload = { parcel_geo: yieldData.farm_location };
+    const res = await getYield(payload);
+    console.log(res);
+    setResponse(res);
+  };
+
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">PMFBY Insurance Portal</h1>
@@ -72,7 +84,6 @@ export default function Insurance() {
             onChange={(e) => handleChange(setEnrolData, field, e.target.value)}
           />
         ))}
-
         <button
           className="bg-green-600 text-white px-4 py-2 rounded"
           onClick={handleEnrol}
@@ -93,7 +104,6 @@ export default function Insurance() {
             onChange={(e) => handleChange(setClaimData, field, e.target.value)}
           />
         ))}
-
         <button
           className="bg-blue-600 text-white px-4 py-2 rounded"
           onClick={handleClaim}
@@ -114,13 +124,9 @@ export default function Insurance() {
             onChange={(e) => handleChange(setYieldData, field, e.target.value)}
           />
         ))}
-
         <button
           className="bg-orange-600 text-white px-4 py-2 rounded"
-          onClick={async () => {
-            const res = await getYield(yieldData);
-            setResponse(res);
-          }}
+          onClick={handleYield}
         >
           Get Yield Prediction
         </button>
