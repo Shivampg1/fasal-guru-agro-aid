@@ -59,14 +59,14 @@ export default function Insurance() {
     setResponse(res);
   };
 
-  // ✅ Yield handler
-  const handleYield = async () => {
-    // Map farm_location → parcel_geo for backend
-    const payload = { parcel_geo: yieldData.farm_location };
-    const res = await getYield(payload);
-    console.log(res);
-    setResponse(res);
-  };
+ // ✅ Yield handler (CORRECT)
+const handleYield = async () => {
+  const parcel_geo = yieldData.farm_location;
+  const res = await getYield(parcel_geo);
+  console.log(res);
+  setResponse(res);
+};
+
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
