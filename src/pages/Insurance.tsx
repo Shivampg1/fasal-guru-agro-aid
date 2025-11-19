@@ -2,12 +2,11 @@ import { useState } from "react";
 import { enrolFarmer, submitClaim, getYield } from "../lib/api";
 
 export default function Insurance() {
-  // Enrolment state
+  // Enrolment state (UPDATED)
   const [enrolData, setEnrolData] = useState({
     farmer_name: "",
+    aadhar_number: "",
     mobile: "",
-    crop: "",
-    season: "",
     parcel_geo: "",
     premium: "",
   });
@@ -32,41 +31,41 @@ export default function Insurance() {
     setter((prev: any) => ({ ...prev, [field]: value }));
   };
 
-  // ✅ Enrolment handler
+  // ✅ Enrolment handler (UPDATED)
   const handleEnrol = async () => {
     const payload = {
       farmer_name: enrolData.farmer_name,
+      aadhar_number: enrolData.aadhar_number,
       mobile: enrolData.mobile,
-      crop: enrolData.crop,
-      season: enrolData.season,
       parcel_geo: enrolData.parcel_geo,
       premium: Number(enrolData.premium),
     };
+
     const res = await enrolFarmer(payload);
     console.log(res);
     setResponse(res);
   };
 
-  // ✅ Claim handler
+  // Claim handler
   const handleClaim = async () => {
     const payload = {
       policy_id: Number(claimData.policy_id),
       damage_type: claimData.damage_type,
       loss_area: Number(claimData.loss_area),
     };
+
     const res = await submitClaim(payload);
     console.log(res);
     setResponse(res);
   };
 
- // ✅ Yield handler (CORRECT)
-const handleYield = async () => {
-  const parcel_geo = yieldData.farm_location;
-  const res = await getYield(parcel_geo);
-  console.log(res);
-  setResponse(res);
-};
-
+  // Yield handler
+  const handleYield = async () => {
+    const parcel_geo = yieldData.farm_location;
+    const res = await getYield(parcel_geo);
+    console.log(res);
+    setResponse(res);
+  };
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
@@ -81,7 +80,9 @@ const handleYield = async () => {
             className="border p-2 w-full mb-2 rounded"
             placeholder={field}
             value={(enrolData as any)[field]}
-            onChange={(e) => handleChange(setEnrolData, field, e.target.value)}
+            onChange={(e) =>
+              handleChange(setEnrolData, field, e.target.value)
+            }
           />
         ))}
         <button
@@ -101,7 +102,9 @@ const handleYield = async () => {
             className="border p-2 w-full mb-2 rounded"
             placeholder={field}
             value={(claimData as any)[field]}
-            onChange={(e) => handleChange(setClaimData, field, e.target.value)}
+            onChange={(e) =>
+              handleChange(setClaimData, field, e.target.value)
+            }
           />
         ))}
         <button
@@ -121,7 +124,9 @@ const handleYield = async () => {
             className="border p-2 w-full mb-2 rounded"
             placeholder={field}
             value={(yieldData as any)[field]}
-            onChange={(e) => handleChange(setYieldData, field, e.target.value)}
+            onChange={(e) =>
+              handleChange(setYieldData, field, e.target.value)
+            }
           />
         ))}
         <button
