@@ -4,21 +4,17 @@ import { enrolFarmer, submitClaim, getYield } from "../lib/api";
 export default function Insurance() {
   const [enrolData, setEnrolData] = useState({
     farmer_name: "",
-    aadhar_number: "",
-    mobile_number: "",
-    state: "",
-    district: "",
+    mobile: "",
     crop: "",
-    farm_size_acres: "",
     season: "",
+    parcel_geo: "",
+    premium: "",
   });
 
   const [claimData, setClaimData] = useState({
     policy_id: "",
-    farmer_name: "",
-    damage_reason: "",
-    loss_percentage: "",
-    date: "",
+    damage_type: "",
+    loss_area: "",
   });
 
   const [yieldData, setYieldData] = useState({
@@ -31,6 +27,33 @@ export default function Insurance() {
 
   const handleChange = (setter: any, field: string, value: any) => {
     setter((prev: any) => ({ ...prev, [field]: value }));
+  };
+
+  // ✅ Enrolment handler
+  const handleEnrol = async () => {
+    const payload = {
+      farmer_name: enrolData.farmer_name,
+      mobile: enrolData.mobile,
+      crop: enrolData.crop,
+      season: enrolData.season,
+      parcel_geo: enrolData.parcel_geo,
+      premium: Number(enrolData.premium),
+    };
+    const res = await enrolFarmer(payload);
+    console.log(res);
+    setResponse(res);
+  };
+
+  // ✅ Claim handler
+  const handleClaim = async () => {
+    const payload = {
+      policy_id: Number(claimData.policy_id),
+      damage_type: claimData.damage_type,
+      loss_area: Number(claimData.loss_area),
+    };
+    const res = await submitClaim(payload);
+    console.log(res);
+    setResponse(res);
   };
 
   return (
@@ -52,10 +75,7 @@ export default function Insurance() {
 
         <button
           className="bg-green-600 text-white px-4 py-2 rounded"
-          onClick={async () => {
-            const res = await enrolFarmer(enrolData);
-            setResponse(res);
-          }}
+          onClick={handleEnrol}
         >
           Enrol Farmer
         </button>
@@ -76,10 +96,7 @@ export default function Insurance() {
 
         <button
           className="bg-blue-600 text-white px-4 py-2 rounded"
-          onClick={async () => {
-            const res = await submitClaim(claimData);
-            setResponse(res);
-          }}
+          onClick={handleClaim}
         >
           Submit Claim
         </button>
