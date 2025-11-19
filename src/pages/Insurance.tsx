@@ -35,23 +35,18 @@ export default function Insurance() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-green-700">
-        PMFBY Insurance Portal
-      </h1>
+      <h1 className="text-3xl font-bold mb-6">PMFBY Insurance Portal</h1>
 
-      {/* ----------------- ENROLMENT -------------- */}
-      <div className="border p-5 rounded-xl mb-8 shadow">
+      {/* Enrolment */}
+      <div className="border p-5 rounded-xl mb-8">
         <h2 className="text-xl font-semibold mb-3">Farmer Enrolment</h2>
-
         {Object.keys(enrolData).map((field) => (
           <input
             key={field}
             className="border p-2 w-full mb-2 rounded"
-            placeholder={field.replace("_", " ")}
+            placeholder={field}
             value={(enrolData as any)[field]}
-            onChange={(e) =>
-              handleChange(setEnrolData, field, e.target.value)
-            }
+            onChange={(e) => handleChange(setEnrolData, field, e.target.value)}
           />
         ))}
 
@@ -66,19 +61,16 @@ export default function Insurance() {
         </button>
       </div>
 
-      {/* ----------------- CLAIM -------------- */}
-      <div className="border p-5 rounded-xl mb-8 shadow">
-        <h2 className="text-xl font-semibold mb-3">Submit Insurance Claim</h2>
-
+      {/* Claim */}
+      <div className="border p-5 rounded-xl mb-8">
+        <h2 className="text-xl font-semibold mb-3">Submit Claim</h2>
         {Object.keys(claimData).map((field) => (
           <input
             key={field}
             className="border p-2 w-full mb-2 rounded"
-            placeholder={field.replace("_", " ")}
+            placeholder={field}
             value={(claimData as any)[field]}
-            onChange={(e) =>
-              handleChange(setClaimData, field, e.target.value)
-            }
+            onChange={(e) => handleChange(setClaimData, field, e.target.value)}
           />
         ))}
 
@@ -93,19 +85,16 @@ export default function Insurance() {
         </button>
       </div>
 
-      {/* ----------------- YIELD ESTIMATION -------------- */}
-      <div className="border p-5 rounded-xl mb-8 shadow">
+      {/* Yield */}
+      <div className="border p-5 rounded-xl mb-8">
         <h2 className="text-xl font-semibold mb-3">Yield Estimation</h2>
-
         {Object.keys(yieldData).map((field) => (
           <input
             key={field}
             className="border p-2 w-full mb-2 rounded"
-            placeholder={field.replace("_", " ")}
+            placeholder={field}
             value={(yieldData as any)[field]}
-            onChange={(e) =>
-              handleChange(setYieldData, field, e.target.value)
-            }
+            onChange={(e) => handleChange(setYieldData, field, e.target.value)}
           />
         ))}
 
@@ -120,9 +109,9 @@ export default function Insurance() {
         </button>
       </div>
 
-      {/* ----------------- RESPONSE -------------- */}
+      {/* Response */}
       {response && (
-        <div className="border p-4 rounded-xl bg-gray-100 shadow">
+        <div className="border p-4 rounded-xl bg-gray-100">
           <h2 className="font-semibold">Response:</h2>
           <pre className="text-sm mt-2">
             {JSON.stringify(response, null, 2)}
@@ -132,4 +121,3 @@ export default function Insurance() {
     </div>
   );
 }
-
