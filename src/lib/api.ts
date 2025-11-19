@@ -1,5 +1,4 @@
-export const API_BASE = import.meta.env.VITE_API_URL;
-// Example: https://1d2503aaf8a4.ngrok-free.app
+export const API_BASE = "https://1d2503aaf8a4.ngrok-free.app";  // your ngrok URL
 
 export async function enrolFarmer(data: any) {
   const res = await fetch(`${API_BASE}/enrolment/`, {
@@ -27,4 +26,3 @@ export async function getYield(data: any) {
   });
   return res.json();
 }
-
