@@ -1,5 +1,6 @@
 import { Mic, MicOff } from "lucide-react";
 import { Button } from "./ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
 
 const Header = () => {
