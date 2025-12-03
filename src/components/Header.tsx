@@ -46,6 +46,12 @@ const Header = () => {
             {isListening ? <Mic className="w-4 h-4" /> : <MicOff className="w-4 h-4" />}
             <span>{isListening ? "Listening..." : "Ask Jarvis"}</span>
           </Button>
+          <Avatar className="w-8 h-8">
+            <AvatarImage src="/placeholder.svg" />
+            <AvatarFallback className="bg-primary text-primary-foreground text-sm">
+              <User className="h-4 w-4" />
+            </AvatarFallback>
+          </Avatar>
         </div>
       </div>
     </header>
