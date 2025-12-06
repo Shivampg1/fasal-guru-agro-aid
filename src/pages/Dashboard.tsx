@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Leaf, Bug, CloudSun, Bot, Upload, FileText, BarChart3, SatelliteDish} from "lucide-react";
+import { CloudSun, Bot, Upload, FileText, BarChart3, SatelliteDish} from "lucide-react";
 import Header from "../components/Header";
 import FeatureCard from "../components/FeatureCard";
 import WeatherWidget from "../components/WeatherWidget";
@@ -45,24 +45,6 @@ const Dashboard = () => {
 
   // ---------------- FEATURES SECTION ----------------
   const features = [
-    {
-      id: "soil",
-      title: "Soil Analysis",
-      description: "Upload soil images for nutrient analysis and fertilizer recommendations",
-      icon: Leaf,
-      gradient: "bg-gradient-to-br from-soil to-harvest",
-      buttonText: "Analyze Soil",
-      onClick: () => window.open("https://huggingface.co/spaces/soildetect/soil-detection-app", "_blank"),
-    },
-    {
-      id: "disease",
-      title: "Disease Detection",
-      description: "Detect crop diseases from images and get treatment suggestions",
-      icon: Bug,
-      gradient: "bg-gradient-to-br from-crop to-primary",
-      buttonText: "Check Disease",
-      onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/crop-disease-detector-app", "_blank"),
-    },
     {
       id: "weather",
       title: "Weather Prediction",
