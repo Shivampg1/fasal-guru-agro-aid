@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Leaf, Bug, CloudSun, Bot, Upload, FileText, BarChart3} from "lucide-react";
+import { Leaf, Bug, CloudSun, Bot, Upload, FileText, BarChart3, SatelliteDish} from "lucide-react";
 import Header from "../components/Header";
 import FeatureCard from "../components/FeatureCard";
 import WeatherWidget from "../components/WeatherWidget";
@@ -89,6 +89,15 @@ const Dashboard = () => {
     gradient: "bg-gradient-to-br from-harvest to-primary",
     buttonText: "Open DSSAT",
     onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/dssat-detection-yield-prediction", "_blank"),
+  },
+    {
+    id: "ndvi",
+    title: "Satellite NDVI",
+    description: "High-resolution NDVI insights for crop health and stress detection.",
+    icon: SatelliteDish,
+    gradient: "bg-gradient-to-br from-weather to-harvest",
+    buttonText: "View NDVI",
+    onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/satellite-crop-monitoring", "_blank"),
   },
     {
       id: "insurance",
