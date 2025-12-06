@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Leaf, Bug, CloudSun, Bot, Upload, FileText } from "lucide-react";
+import { Leaf, Bug, CloudSun, Bot, Upload, FileText, BarChart3} from "lucide-react";
 import Header from "../components/Header";
 import FeatureCard from "../components/FeatureCard";
 import WeatherWidget from "../components/WeatherWidget";
@@ -81,6 +81,15 @@ const Dashboard = () => {
       buttonText: "Talk with Jarvis",
       onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"),
     },
+    {
+    id: "dssat-yield",
+    title: "Yield Estimator (DSSAT)",
+    description: "Estimate crop yield using DSSAT-based models and farm data.",
+    icon: BarChart3, // or any other icon you prefer
+    gradient: "bg-gradient-to-br from-harvest to-primary",
+    buttonText: "Open DSSAT",
+    onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/dssat-detection-yield-prediction", "_blank"),
+  },
     {
       id: "insurance",
       title: "PMFBY Insurance",
