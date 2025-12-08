@@ -54,15 +54,7 @@ const Dashboard = () => {
       buttonText: "View Forecast",
       onClick: () => window.open("https://weather-app-navy-nine-35.vercel.app", "_blank"),
     },
-    {
-      id: "jarvis",
-      title: "Jarvis AI Assistant",
-      description: "Ask farming questions through multilingual voice assistant",
-      icon: Bot,
-      gradient: "bg-gradient-to-br from-primary to-crop",
-      buttonText: "Talk with Jarvis",
-      onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"),
-    },
+    
     {
     id: "dssat-yield",
     title: "Yield Estimator (DSSAT)",
