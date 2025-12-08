@@ -42,6 +42,15 @@ const Header = () => {
 
         <div className="flex items-center space-x-4">
           <Button
+            variant="outline"
+            size="sm"
+            onClick={getLocation}
+            className="flex items-center space-x-2"
+          >
+            <MapPin className="w-4 h-4" />
+            <span>Get Location</span>
+          </Button>
+          <Button
             variant={isListening ? "default" : "outline"}
             size="sm"
             onClick={toggleVoiceAssistant}
