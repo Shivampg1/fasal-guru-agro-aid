@@ -1,6 +1,5 @@
 import { Mic, MicOff, User } from "lucide-react";
 import { Button } from "./ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
 
 const Header = () => {
@@ -43,12 +42,7 @@ const Header = () => {
             <span>{isListening ? "Listening..." : "Ask Jarvis"}</span>
           </Button>
 
-          <Avatar className="w-8 h-8">
-            <AvatarImage src="/placeholder.svg" />
-            <AvatarFallback className="bg-primary text-primary-foreground text-sm">
-              <User className="h-4 w-4" />
-            </AvatarFallback>
-          </Avatar>
+          
         </div>
       </div>
     </header>
