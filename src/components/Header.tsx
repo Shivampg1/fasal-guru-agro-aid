@@ -9,7 +9,7 @@ const Header = () => {
     setIsListening(true);
     setTimeout(() => setIsListening(false), 1500);
 
-    const url = "https://jarvis-flask-alpha.vercel.app/";
+    const url = "";
     const win = window.open(url, "_blank", "noopener,noreferrer");
 
     if (!win) {
