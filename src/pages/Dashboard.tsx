@@ -87,7 +87,7 @@ const Dashboard = () => {
     icon: Bot,
     gradient: "bg-gradient-to-br from-weather to-harvest",
     buttonText: "Ask Jarvis",
-    onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"),
+    onClick: () => window.open("https://jarvis1-wgir.onrender.com", "_blank"),
   },
     {
       id: "insurance",
