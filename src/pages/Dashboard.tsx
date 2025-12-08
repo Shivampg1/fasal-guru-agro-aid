@@ -77,7 +77,7 @@ const Dashboard = () => {
       id:"soil-analysis", title:"Soil Analysis", description:"Analyze soil health & fertilizer suggestion",
       icon:Upload,
       gradient: "bg-gradient-to-br from-weather to-harvest",
-      buttonText: "View NDVI",
+      buttonText: "View Soil Analysis",
       onClick: () => window.open("https://huggingface.co/spaces/soildetect/soil-detection-app", "_blank"),
     },
     // {
