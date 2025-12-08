@@ -116,11 +116,11 @@ const Dashboard = () => {
         </div>
         <div className="relative max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Welcome to <span className="text-harvest">FASALGuru</span>
+            Welcome to <span className="text-harvest">F.A.S.A.L Guru</span>
           </h1>
-          <h6 className="text-4xl md:text-6xl text-white mb-6">
+          <p className="text-4xl md:text-6xl text-white mb-6">
             (Farm Advisory System for Agricultural Land)
-          </h6>
+          </p>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Smart farming solutions for soil analysis, disease detection, weather
             prediction and PMFBY insurance services.
