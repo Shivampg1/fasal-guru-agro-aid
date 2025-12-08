@@ -55,15 +55,15 @@ const Dashboard = () => {
       onClick: () => window.open("https://weather-app-navy-nine-35.vercel.app", "_blank"),
     },
     
-    {
-    id: "dssat-yield",
-    title: "Yield Estimator (DSSAT)",
-    description: "Estimate crop yield using DSSAT-based models and farm data.",
-    icon: BarChart3, // or any other icon you prefer
-    gradient: "bg-gradient-to-br from-harvest to-primary",
-    buttonText: "Open DSSAT",
-    onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/dssat-detection-yield-prediction", "_blank"),
-  },
+  //   {
+  //   id: "dssat-yield",
+  //   title: "Yield Estimator (DSSAT)",
+  //   description: "Estimate crop yield using DSSAT-based models and farm data.",
+  //   icon: BarChart3, // or any other icon you prefer
+  //   gradient: "bg-gradient-to-br from-harvest to-primary",
+  //   buttonText: "Open DSSAT",
+  //   onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/dssat-detection-yield-prediction", "_blank"),
+  // },
     {
     id: "ndvi",
     title: "Satellite NDVI",
@@ -73,15 +73,15 @@ const Dashboard = () => {
     buttonText: "View NDVI",
     onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/satellite-crop-monitoring", "_blank"),
   },
-    {
-      id: "insurance",
-      title: "PMFBY Insurance",
-      description: "Enrol farmers, submit claims and get yield estimation",
-      icon: FileText,
-      gradient: "bg-gradient-to-br from-accent to-primary",
-      buttonText: "Open Insurance",
-      onClick: () => setActiveSection("insurance"),
-    },
+    // {
+    //   id: "insurance",
+    //   title: "PMFBY Insurance",
+    //   description: "Enrol farmers, submit claims and get yield estimation",
+    //   icon: FileText,
+    //   gradient: "bg-gradient-to-br from-accent to-primary",
+    //   buttonText: "Open Insurance",
+    //   onClick: () => setActiveSection("insurance"),
+    // },
   ];
 
   return (
