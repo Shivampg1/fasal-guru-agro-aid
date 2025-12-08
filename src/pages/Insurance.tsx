@@ -7,6 +7,8 @@ export default function Insurance() {
     farmer_name: "",
     aadhar_number: "",
     mobile: "",
+    crop: "",
+    season: "", 
     parcel_geo: "",
     premium: "",
   });
@@ -20,10 +22,9 @@ export default function Insurance() {
 
   // Yield state
   const [yieldData, setYieldData] = useState({
-    farm_location: "",
-    crop_type: "",
-    season: "",
+    parcel_geo: "",
   });
+
 
   const [response, setResponse] = useState<any>(null);
 
@@ -37,6 +38,8 @@ export default function Insurance() {
       farmer_name: enrolData.farmer_name,
       aadhar_number: enrolData.aadhar_number,
       mobile: enrolData.mobile,
+      crop: enrolData.crop,
+      season: enrolData.season,
       parcel_geo: enrolData.parcel_geo,
       premium: Number(enrolData.premium),
     };
@@ -59,13 +62,30 @@ export default function Insurance() {
     setResponse(res);
   };
 
-  // Yield handler
-  const handleYield = async () => {
-    const parcel_geo = yieldData.farm_location;
-    const res = await getYield(parcel_geo);
-    console.log(res);
+  // ----------------------
+// ⭐ Yield handler
+// ----------------------
+const handleYield = async () => {
+  const parcel = yieldData.farm_location.trim();
+
+  if (!parcel) {
+    alert("Please enter parcel_geo");
+    return;
+  }
+
+  console.log("Calling yield API with:", parcel);
+
+  try {
+    const res = await getYield(parcel);
+    console.log("Yield Response:", res);
     setResponse(res);
-  };
+  } catch (err) {
+    console.error("Yield API error:", err);
+  }
+};
+
+
+
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
@@ -115,27 +135,28 @@ export default function Insurance() {
         </button>
       </div>
 
-      {/* Yield */}
-      <div className="border p-5 rounded-xl mb-8">
-        <h2 className="text-xl font-semibold mb-3">Yield Estimation</h2>
-        {Object.keys(yieldData).map((field) => (
-          <input
-            key={field}
-            className="border p-2 w-full mb-2 rounded"
-            placeholder={field}
-            value={(yieldData as any)[field]}
-            onChange={(e) =>
-              handleChange(setYieldData, field, e.target.value)
-            }
-          />
-        ))}
-        <button
-          className="bg-orange-600 text-white px-4 py-2 rounded"
-          onClick={handleYield}
-        >
-          Get Yield Prediction
-        </button>
-      </div>
+   {/* Yield Estimation */}
+<div className="border p-5 rounded-xl mb-8">
+  <h2 className="text-xl font-semibold mb-3">Yield Estimation</h2>
+
+  <input
+    className="border p-2 w-full mb-2 rounded"
+    placeholder="parcel_geo (example: 28.460)"
+    value={yieldData.farm_location}
+    onChange={(e) =>
+      setYieldData({ ...yieldData, farm_location: e.target.value })
+    }
+  />
+
+  <button
+    className="bg-orange-600 text-white px-4 py-2 rounded"
+    onClick={handleYield}
+  >
+    Get Yield Prediction
+  </button>
+</div>
+
+
 
       {/* Response */}
       {response && (
