@@ -1,4 +1,4 @@
-import { Mic, MicOff, User } from "lucide-react";
+import { Mic, MicOff, User, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 
@@ -10,6 +10,15 @@ const Header = () => {
     setTimeout(() => setIsListening(false), 1500);
 
     const url = "https://jarvis-flask-alpha.vercel.app/";
+    const win = window.open(url, "_blank", "noopener,noreferrer");
+
+    if (!win) {
+      window.location.href = url;
+    }
+  };
+
+  const getLocation = () => {
+    const url = "https://coordinates-app.netlify.app/";
     const win = window.open(url, "_blank", "noopener,noreferrer");
 
     if (!win) {
