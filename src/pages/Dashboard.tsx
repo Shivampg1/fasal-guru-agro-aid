@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CloudSun, Bot, Upload, FileText, BarChart3, SatelliteDish} from "lucide-react";
 import Header from "../components/Header";
 import FeatureCard from "../components/FeatureCard";
@@ -6,12 +7,13 @@ import WeatherWidget from "../components/WeatherWidget";
 import heroImage from "../assets/hero-farming.jpg";
 import { useToast } from "../hooks/use-toast";
 
-// ⭐ IMPORT BACKEND API FUNCTIONS
+//  IMPORT BACKEND API FUNCTIONS
 import { enrolFarmer, submitClaim, getYield } from "../lib/api";
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   // ---------------- STATES FOR INSURANCE FORMS ----------------
   // const [enrol, setEnrol] = useState({
@@ -103,7 +105,7 @@ const Dashboard = () => {
       stats:"Gov Scheme",
       gradient: "bg-gradient-to-br from-accent to-primary",
       buttonText: "Open Insurance",
-      link:"/insurance", external:false },
+      onClick: () => navigate("/insurance") },
   ];
 
   return (
