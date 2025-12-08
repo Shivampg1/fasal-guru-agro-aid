@@ -89,15 +89,15 @@ const Dashboard = () => {
     buttonText: "Ask Jarvis",
     onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"),
   },
-    // {
-    //   id: "insurance",
-    //   title: "PMFBY Insurance",
-    //   description: "Enrol farmers, submit claims and get yield estimation",
-    //   icon: FileText,
-    //   gradient: "bg-gradient-to-br from-accent to-primary",
-    //   buttonText: "Open Insurance",
-    //   onClick: () => setActiveSection("insurance"),
-    // },
+    {
+      id: "insurance",
+      title: "PMFBY Insurance",
+      description: "Enrol farmers, submit claims and get yield estimation",
+      icon: FileText,
+      gradient: "bg-gradient-to-br from-accent to-primary",
+      buttonText: "Open Insurance",
+      onClick: () => setActiveSection("insurance"),
+    },
   ];
 
   return (
