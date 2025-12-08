@@ -1,4 +1,4 @@
-export const API_BASE = "https://2676bde8f77c.ngrok-free.app";
+export const API_BASE = "https://e48eb9649767.ngrok-free.app";
 
 // ------------------------
 // 1) Farmer Enrolment (POST)
