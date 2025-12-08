@@ -89,15 +89,18 @@ const Dashboard = () => {
     buttonText: "Ask Jarvis",
     onClick: () => window.open("https://jarvis1-wgir.onrender.com", "_blank"),
   },
-    {
-      id: "insurance",
-      title: "PMFBY Insurance",
-      description: "Enrol farmers, submit claims and get yield estimation",
-      icon: FileText,
-      gradient: "bg-gradient-to-br from-accent to-primary",
-      buttonText: "Open Insurance",
-      onClick: () => setActiveSection("insurance"),
-    },
+    // {
+    //   id: "insurance",
+    //   title: "PMFBY Insurance",
+    //   description: "Enrol farmers, submit claims and get yield estimation",
+    //   icon: FileText,
+    //   gradient: "bg-gradient-to-br from-accent to-primary",
+    //   buttonText: "Open Insurance",
+    //   onClick: () => setActiveSection("insurance"),
+    // },
+    { id:"insurance", title:"PMFBY Insurance", description:"Enroll farmers, claim & yield",
+      icon:FileText, stats:"Gov Scheme",
+      link:"/insurance", external:false },
   ];
 
   return (
