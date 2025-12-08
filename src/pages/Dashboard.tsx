@@ -118,9 +118,9 @@ const Dashboard = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Welcome to <span className="text-harvest">FASALGuru</span>
           </h1>
-          <h4 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Farm Advisory System for Agricultural Land
-          </h4>
+          <h6 className="text-4xl md:text-6xl text-white mb-6">
+            (Farm Advisory System for Agricultural Land)
+          </h6>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Smart farming solutions for soil analysis, disease detection, weather
             prediction and PMFBY insurance services.
