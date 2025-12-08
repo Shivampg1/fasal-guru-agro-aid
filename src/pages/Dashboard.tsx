@@ -75,7 +75,7 @@ const Dashboard = () => {
   },
     { 
       id:"soil-analysis", title:"Soil Analysis", description:"Analyze soil health & fertilizer suggestion",
-      icon:upload, stats:"NPK Scan",
+      icon:Upload, stats:"NPK Scan",
       link:"https://huggingface.co/spaces/soildetect/soil-detection-app", external:true 
     },
     // {
