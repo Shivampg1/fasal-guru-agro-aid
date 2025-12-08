@@ -14,34 +14,34 @@ const Dashboard = () => {
   const { toast } = useToast();
 
   // ---------------- STATES FOR INSURANCE FORMS ----------------
-  const [enrol, setEnrol] = useState({
-    farmer_name: "",
-    aadhar_number: "",
-    mobile_number: "",
-    state: "",
-    district: "",
-    crop: "",
-    farm_size_acres: "",
-    season: "",
-  });
+  // const [enrol, setEnrol] = useState({
+  //   farmer_name: "",
+  //   aadhar_number: "",
+  //   mobile_number: "",
+  //   state: "",
+  //   district: "",
+  //   crop: "",
+  //   farm_size_acres: "",
+  //   season: "",
+  // });
 
-  const [claim, setClaim] = useState({
-    policy_id: "",
-    farmer_name: "",
-    damage_reason: "",
-    loss_percentage: "",
-    date: "",
-  });
+  // const [claim, setClaim] = useState({
+  //   policy_id: "",
+  //   farmer_name: "",
+  //   damage_reason: "",
+  //   loss_percentage: "",
+  //   date: "",
+  // });
 
-  const [yieldReq, setYieldReq] = useState({
-    farm_location: "",
-    crop_type: "",
-    season: "",
-  });
+  // const [yieldReq, setYieldReq] = useState({
+  //   farm_location: "",
+  //   crop_type: "",
+  //   season: "",
+  // });
 
-  const handleChange = (setter: any, field: string, value: any) => {
-    setter((prev: any) => ({ ...prev, [field]: value }));
-  };
+  // const handleChange = (setter: any, field: string, value: any) => {
+  //   setter((prev: any) => ({ ...prev, [field]: value }));
+  // };
 
   // ---------------- FEATURES SECTION ----------------
   const features = [
@@ -98,8 +98,10 @@ const Dashboard = () => {
     //   buttonText: "Open Insurance",
     //   onClick: () => setActiveSection("insurance"),
     // },
-    { id:"insurance", title:"PMFBY Insurance", description:"Enroll farmers, claim & yield",
-      icon:FileText, stats:"Gov Scheme",
+    { id:"insurance", title:"PMFBY Insurance", description: "Enroll farmers, claim & yield",
+      icon: FileText, 
+      stats:"Gov Scheme",
+      gradient: "bg-gradient-to-br from-accent to-primary",
       buttonText: "Open Insurance",
       link:"/insurance", external:false },
   ];
