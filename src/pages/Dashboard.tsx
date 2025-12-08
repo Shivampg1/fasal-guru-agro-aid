@@ -100,6 +100,7 @@ const Dashboard = () => {
     // },
     { id:"insurance", title:"PMFBY Insurance", description:"Enroll farmers, claim & yield",
       icon:FileText, stats:"Gov Scheme",
+      buttonText: "Open Insurance",
       link:"/insurance", external:false },
   ];
 
