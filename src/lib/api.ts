@@ -1,4 +1,4 @@
-export const API_BASE = "https://e48eb9649767.ngrok-free.app";
+export const API_BASE = "https://38700ac80b54.ngrok-free.app";
 
 // ------------------------
 // 1) Farmer Enrolment (POST)
@@ -30,12 +30,10 @@ export async function submitClaim(data: any) {
 // 3) Yield (GET)
 // ------------------------
 export async function getYield(parcel_geo: string) {
-  const res = await fetch(
-    `${API_BASE}/yield/?parcel_geo=${encodeURIComponent(parcel_geo)}`,
-    {
-      method: "GET",
-    }
-  );
+  const url = `${API_BASE}/yield/?parcel_geo=${parcel_geo}`;
 
+  console.log("Calling yield API:", url);
+
+  const res = await fetch(url, { method: "GET" });
   return res.json();
 }
