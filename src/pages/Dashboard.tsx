@@ -116,9 +116,9 @@ const Dashboard = () => {
         </div>
         <div className="relative max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Welcome to <span className="text-harvest">F.A.S.A.L गुरु</span>
+            Welcome to <span className="text-harvest">FASAL Guru</span>
           </h1>
-          <p className="text-4xl md:text-6xl text-white mb-6">
+          <p className="text-4xl md:text-2xl text-white mb-6">
             (Farm Advisory System for Agricultural Land)
           </p>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
