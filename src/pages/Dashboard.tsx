@@ -73,6 +73,11 @@ const Dashboard = () => {
     buttonText: "View NDVI",
     onClick: () => window.open("https://huggingface.co/spaces/cropdiseasedetection/satellite-crop-monitoring", "_blank"),
   },
+    { 
+      id:"soil-analysis", title:"Soil Analysis", description:"Analyze soil health & fertilizer suggestion",
+      icon:upload, stats:"NPK Scan",
+      link:"https://huggingface.co/spaces/soildetect/soil-detection-app", external:true 
+    },
     // {
     //   id: "insurance",
     //   title: "PMFBY Insurance",
