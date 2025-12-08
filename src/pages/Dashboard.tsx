@@ -75,8 +75,10 @@ const Dashboard = () => {
   },
     { 
       id:"soil-analysis", title:"Soil Analysis", description:"Analyze soil health & fertilizer suggestion",
-      icon:Upload, stats:"NPK Scan",
-      link:"https://huggingface.co/spaces/soildetect/soil-detection-app", external:true 
+      icon:Upload,
+      gradient: "bg-gradient-to-br from-weather to-harvest",
+      buttonText: "View NDVI",
+      onClick: () => window.open("https://huggingface.co/spaces/soildetect/soil-detection-app", "_blank"),
     },
     // {
     //   id: "insurance",
