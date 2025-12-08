@@ -80,6 +80,15 @@ const Dashboard = () => {
       buttonText: "View Soil Analysis",
       onClick: () => window.open("https://huggingface.co/spaces/soildetect/soil-detection-app", "_blank"),
     },
+    {
+    id: "Jarvis",
+    title: "Ask Jarvis",
+    description: "Ask your Guru about anything.",
+    icon: Bot,
+    gradient: "bg-gradient-to-br from-weather to-harvest",
+    buttonText: "Ask Jarvis",
+    onClick: () => window.open("https://jarvis-flask-alpha.vercel.app/", "_blank"),
+  },
     // {
     //   id: "insurance",
     //   title: "PMFBY Insurance",
